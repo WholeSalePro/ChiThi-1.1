@@ -109,9 +109,9 @@ export async function renderChatsPage(app) {
       return (b.lastMsgTime?.seconds || 0) - (a.lastMsgTime?.seconds || 0);
     });
 
-    sortedChats.forEach(({ otherId, otherUser, lastMsg, lastMsgTime, unread, lastMsgSender }) => {
+    sortedChats.forEach(({ otherId, otherUser, lastMsg, lastMsgTime, unread, sender }) => {
       const formattedTime = lastMsgTime ? formatTime(lastMsgTime) : "";
-      const isOwnMsg = lastMsgSender === uid;
+      const isOwnMsg = sender === uid;
 
       const preview = `${isOwnMsg ? "You: " : ""}${lastMsg.slice(0, 30)}${lastMsg.length > 30 ? "..." : ""}`;
 
@@ -160,7 +160,8 @@ export async function renderChatsPage(app) {
         otherUser,
         lastMsg,
         lastMsgTime,
-        unread
+        unread,
+        sender
       });
     }
 
