@@ -161,7 +161,7 @@ export async function renderChatsPage(app) {
         lastMsg,
         lastMsgTime,
         unread,
-        sender
+        sender: data.sender,
       });
     }
 
